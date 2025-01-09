@@ -2,7 +2,8 @@
 
 class Model extends CI_Model
 {
-    private $_table = 'menu';
+    private $_table = 'pegawai';
+    
 
     // Fungsi login menggunakan password hashing yang lebih aman
     public function login()
@@ -20,7 +21,7 @@ class Model extends CI_Model
                 $this->session->set_userdata('id', $user['userId']);
                 $this->session->set_flashdata('type', 'alert-success');
                 $this->session->set_flashdata('pesan', '<strong>Sukses!</strong> Anda berhasil login.');
-                redirect('menu');
+                redirect('pegawai');
             } else {
                 $this->session->set_flashdata('type', 'alert-danger');
                 $this->session->set_flashdata('pesan', '<strong>Gagal!</strong> ID atau Password salah');
@@ -33,11 +34,11 @@ class Model extends CI_Model
         }
     }
 
-    // Menggunakan query builder untuk mengambil data dari menu
+    // Menggunakan query builder untuk mengambil data dari pegawai
     public function contoh1()
     {
         return $this->db->select('Nomor, Nama, Alamat, Telepon')
-            ->get('menu')
+            ->get('pegawai')
             ->result_array();
     }
 
@@ -45,25 +46,25 @@ class Model extends CI_Model
     public function contoh2($inputAjax)
     {
         return $this->db->where('kolom', $inputAjax)
-            ->get('menu')
+            ->get('pegawai')
             ->result_array();
     }
     public function hapusData($nomor)
     {
         // Hapus data berdasarkan 'Nomor'
         $this->db->where('Nomor', $nomor);
-        return $this->db->delete('menu'); // Ganti 'nama_tabel' dengan nama tabel Anda
+        return $this->db->delete('pegawai'); // Ganti 'nama_tabel' dengan nama tabel Anda
     }
 
     public function update($nomor, $data)
     {
         $this->db->where('Nomor', $nomor); // Kondisi berdasarkan 'Nomor'
-        return $this->db->update('menu', $data); // Update data di tabel 'menu'
+        return $this->db->update('pegawai', $data); // Update data di tabel 'pegawai'
     }
 
     public function tambahData($data)
     {
-        // Ambil nomor terakhir dari tabel menu
+        // Ambil nomor terakhir dari tabel pegawai
         $this->db->select('Nomor');
         $this->db->order_by('Nomor', 'DESC');
         $last_nomor = $this->db->get($this->_table, 1)->row_array();

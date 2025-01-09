@@ -69,9 +69,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="Transaksi/fotocopy" style="white-space: normal;">Fotocopy</a>
+                        <a class="collapse-item" href="transaksi/fotocopy" style="white-space: normal;">Fotocopy</a>
                         
-                        <a class="collapse-item" href="Transaksi/ATK" style="white-space: normal;">ATK</a>
+                        <a class="collapse-item" href="transaksi/ATK" style="white-space: normal;">ATK</a>
                     </div>
                 </div>
             </li>
@@ -87,8 +87,8 @@
                 <div id="collapseDb" class="collapse" aria-labelledby="headingDb" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="Database/pegawai" style="white-space: normal;">Pegawai</a>
-                        <a class="collapse-item" href="Database/barang" style="white-space: normal;">Barang</a>
+                        <a class="collapse-item" href="database/pegawai" style="white-space: normal;">Pegawai</a>
+                        <a class="collapse-item" href="database/barang" style="white-space: normal;">Barang</a>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRekap"
                     aria-expanded="true" aria-controls="collapseTwo" id="menuRekap">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Rekap</span>
@@ -104,7 +104,7 @@
                 <div id="collapseRekap" class="collapse" aria-labelledby="headingRekap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="Rekap/transaksi" style="white-space: normal;">Transaksi</a>
+                        <a class="collapse-item" href="rekap/transaksi" style="white-space: normal;">Transaksi</a>
                     </div>
                 </div>
             </li>

@@ -12,8 +12,8 @@ class Select extends CI_Controller {
         $this->load->model("Model");
     }
     
-    public function menu(){
-        $data = $this->Model->menu()->result_array(); // buka class contoh1 di Model
+    public function pegawai(){
+        $data = $this->Model->pegawai()->result_array(); // buka class contoh1 di Model
         echo json_encode($data); 
     }
     public function contoh2(){
