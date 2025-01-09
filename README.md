@@ -1,6 +1,3 @@
-```markdown
-# CodeIgniter Project Template
-
 ## Description
 This is a project built using the **CodeIgniter Framework**—a lightweight and powerful PHP framework. It’s ideal for building dynamic web applications quickly and efficiently. This template serves as a starting point for your next project, with pre-configured settings and an organized structure.
 
