@@ -69,9 +69,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="transaksi/fotocopy" style="white-space: normal;">Fotocopy</a>
-                        
-                        <a class="collapse-item" href="transaksi/ATK" style="white-space: normal;">ATK</a>
+                        <a class="collapse-item" href="fotocopy" style="white-space: normal;">Fotocopy & ATK</a>
                     </div>
                 </div>
             </li>
@@ -87,8 +85,8 @@
                 <div id="collapseDb" class="collapse" aria-labelledby="headingDb" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="database/pegawai" style="white-space: normal;">Pegawai</a>
-                        <a class="collapse-item" href="database/barang" style="white-space: normal;">Barang</a>
+                        <a class="collapse-item" href="pegawai" style="white-space: normal;">Pegawai</a>
+                        <a class="collapse-item" href="barang" style="white-space: normal;">Barang</a>
                     </div>
                 </div>
 

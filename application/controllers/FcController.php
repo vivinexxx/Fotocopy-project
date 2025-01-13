@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 
-class Controller extends CI_Controller
+class FcController extends CI_Controller
 {
     public function __construct()
     {
@@ -13,13 +13,12 @@ class Controller extends CI_Controller
         $this->load->library('form_validation'); // Pastikan menggunakan 'form_validation' standard
         $this->load->helper('url');
         $this->load->helper('date');
-        $this->load->model("Model");
-        $this->load->model("BarangModel");
+        $this->load->Model("FcModel");
     }
 
     public function login()
     {
-        $this->Model->login();
+        $this->FcModel->login();
     }
 
     public function logout()
@@ -34,58 +33,62 @@ class Controller extends CI_Controller
         $this->load->view('login');
     }
 
-    // http://localhost/template_penerbitan/pegawai
-    public function pegawai()
+    // http://localhost/template_penerbitan/fotocopy
+    public function fotocopy()
     {
-        $data['pegawai'] = $this->Model->contoh1();
+        $data['fotocopy'] = $this->FcModel->getAllData();
         $this->load->view('header');
-        $this->load->view('Database/pegawai', $data);
+        $this->load->view('Transaksi/fotocopy', $data);
     }
 
     public function database()
     {
-        $data['database'] = $this->Model->contoh1();
+        $data['database'] = $this->FcModel->contoh1();
         $this->load->view('header');
-        $this->load->view('pegawai', $data);
+        $this->load->view('fotocopy', $data);
     }
 
     public function tambahData()
     {
         // Menggunakan form_validation untuk validasi form
-        $this->form_validation->set_rules('nama', 'nama', 'required');
-        $this->form_validation->set_rules('alamat', 'alamat', 'required');
-        $this->form_validation->set_rules('telepon', 'telepon', 'required');
+        $this->form_validation->set_rules('nomor', 'nomor', 'required');
+        $this->form_validation->set_rules('id_barang', 'id_barang', 'required');
+        $this->form_validation->set_rules('qty', 'qty', 'required');
+        $this->form_validation->set_rules('harga_satuan', 'harga_satuan', 'required');
+        $this->form_validation->set_rules('harga_total', 'harga_total', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             // Jika validasi gagal
             $this->session->set_flashdata('type', 'alert-danger');
             $this->session->set_flashdata('pesan', 'Semua field harus diisi.');
-            redirect('pegawai');
+            redirect('fotocopy');
         } else {
             // Ambil data dari form
             $data = [
-                'nama' => $this->input->post('nama'),
-                'alamat' => $this->input->post('alamat'),
-                'telepon' => $this->input->post('telepon')
+                'nomor' => $this->input->post('nomor'),
+                'id_barang' => $this->input->post('id_barang'),
+                'qty' => $this->input->post('qty'),
+                'harga_satuan' => $this->input->post('harga_satuan'),
+                'harga_total' => $this->input->post('harga_total ')
             ];
 
             // Simpan data ke database
-            $insert_nomor = $this->Model->tambahData($data); // Mengirimkan $data ke model
+            $insert_nomor = $this->FcModel->tambahData($data); // Mengirimkan $data ke FcModel
 
             // Jika berhasil
             if ($insert_nomor) {
-                redirect('pegawai');
+                redirect('fotocopy');
             } else {
                 // Jika gagal
                 $this->session->set_flashdata('type', 'alert-danger');
                 $this->session->set_flashdata('pesan', 'Terjadi kesalahan, coba lagi.');
-                redirect('pegawai');
+                redirect('fotocopy');
             }
         }
     }
     public function hapusData()
     {
-        $nomor = $this->input->post('nomor');
+        $nomor = $this->input->post('id_fc');
 
         if (!$nomor) {
             $this->session->set_flashdata('type', 'alert-danger');
@@ -93,7 +96,7 @@ class Controller extends CI_Controller
             redirect('database');
         }
 
-        $delete = $this->Model->hapusData($nomor);
+        $delete = $this->FcModel->hapusData($nomor);
         if ($delete) {
             $this->session->set_flashdata('type', 'alert-success');
             $this->session->set_flashdata('pesan', 'Data berhasil dihapus.');
@@ -101,27 +104,29 @@ class Controller extends CI_Controller
             $this->session->set_flashdata('type', 'alert-danger');
             $this->session->set_flashdata('pesan', 'Terjadi kesalahan saat menghapus data.');
         }
-        redirect('pegawai');
+        redirect('fotocopy');
     }
 
     public function update()
     {
         $nomor = $this->input->post('nomor');
-        $nama = $this->input->post('nama');
-        $alamat = $this->input->post('alamat');
-        $telepon = $this->input->post('telepon');
-
-        // Update data di database menggunakan model
+        $id_barang = $this->input->post('id_barang');
+        $qty = $this->input->post('qty');
+        $harga_satuan = $this->input->post('harga_satuan');
+        $harga_total = $this->input->post('harga_total');
+        // Update data di database menggunakan FcModel
         $data = [
-            'nama' => $nama,
-            'alamat' => $alamat,
-            'telepon' => $telepon,
+            'nomor' => $nomor,
+            'id_barang' => $id_barang,
+            'qty' => $qty,
+            'harga_satuan' => $harga_satuan,
+            'harga_total' => $harga_total,
         ];
 
-        // Panggil model untuk memperbarui data berdasarkan Nomor
-        $this->Model->update($nomor, $data);
+        // Panggil FcModel untuk memperbarui data berdasarkan Nomor
+        $this->FcModel->update($nomor, $data);
 
         // Redirect atau beri respons setelah update
-        redirect('pegawai'); // Ubah sesuai kebutuhan
+        redirect('fotocopy'); // Ubah sesuai kebutuhan
     }
 }

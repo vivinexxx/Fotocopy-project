@@ -210,6 +210,8 @@ svg {
 
 table {
   border-collapse: collapse;
+  /* table-layout: auto; */
+  /* width: 100%; */
 }
 
 caption {

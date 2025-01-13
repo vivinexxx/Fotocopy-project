@@ -117,22 +117,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </tr>
                         </thead>
                         <tbody id="tbody" name="tbody" style="color: black;">
-                            <?php if (isset($database) && !empty($database)): ?>
-                                <?php foreach ($database as $row): ?>
+                            <?php if (isset($pegawai) && !empty($pegawai)): ?>
+                                <?php foreach ($pegawai as $row): ?>
                                     <tr>
-                                        <td><?= $row['Nomor']; ?></td>
-                                        <td><?= $row['Nama']; ?></td>
-                                        <td><?= $row['Alamat']; ?></td>
-                                        <td><?= $row['Telepon']; ?></td>
+                                        <td><?= $row['nomor']; ?></td>
+                                        <td><?= $row['nama']; ?></td>
+                                        <td><?= $row['alamat']; ?></td>
+                                        <td><?= $row['telepon']; ?></td>
                                         <td class="hide-print">
                                             <!-- Call to action buttons -->
                                             <ul class="list-inline m-0">
                                                 <!-- Tombol Edit -->
                                                 <li class="list-inline-item">
                                                     <button class="btn btn-success btn-sm rounded-0" data-toggle="tooltip"
-                                                        title="Edit" data-nomor="<?= $row['Nomor'] ?>"
-                                                        data-nama="<?= $row['Nama'] ?>" data-alamat="<?= $row['Alamat'] ?>"
-                                                        data-telepon="<?= $row['Telepon'] ?>" data-toggle="modal"
+                                                        title="Edit" data-nomor="<?= $row['nomor'] ?>"
+                                                        data-nama="<?= $row['nama'] ?>" data-alamat="<?= $row['alamat'] ?>"
+                                                        data-telepon="<?= $row['telepon'] ?>" data-toggle="modal"
                                                         data-target="#modalEditData">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
@@ -142,7 +142,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <li class="list-inline-item">
                                                     <form action="<?= base_url('controller/hapusData'); ?>" method="post"
                                                         style="display: inline;">
-                                                        <input type="hidden" name="nomor" value="<?= $row['Nomor']; ?>">
+                                                        <input type="hidden" name="nomor" value="<?= $row['nomor']; ?>">
                                                         <button type="submit" class="btn btn-danger btn-sm rounded-0"
                                                             data-toggle="tooltip" title="Delete"
                                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
@@ -195,17 +195,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <form action="<?= site_url('Controller/tambahData') ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama">Nama</label>
+                        <label for="nama">nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
                             required>
                     </div>
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
+                        <label for="alamat">alamat</label>
                         <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat"
                             required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="telepon">Telepon</label>
+                        <label for="telepon">telepon</label>
                         <input type="text" class="form-control" id="telepon" name="telepon"
                             placeholder="Masukkan nomor telepon" required>
                     </div>
@@ -231,19 +231,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
             <form action="<?= base_url('update') ?>" method="POST">
                 <div class="modal-body">
-                    <!-- Hidden field for ID or Nomor -->
+                    <!-- Hidden field for ID or nomor -->
                     <input type="hidden" id="nomor" name="nomor" required>
 
                     <div class="form-group">
-                        <label for="nama">Nama</label>
+                        <label for="nama">nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
+                        <label for="alamat">alamat</label>
                         <textarea class="form-control" id="alamat" name="alamat" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="telepon">Telepon</label>
+                        <label for="telepon">telepon</label>
                         <input type="text" class="form-control" id="telepon" name="telepon"" required>
                     </div>
                 </div>
@@ -265,10 +265,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </button>
             </div>
             <div class="modal-body">
-                <p><strong>Nomor:</strong> <span id="detailNomor"></span></p>
-                <p><strong>Nama:</strong> <span id="detailNama"></span></p>
-                <p><strong>Alamat:</strong> <span id="detailAlamat"></span></p>
-                <p><strong>Telepon:</strong> <span id="detailTelepon"></span></p>
+                <p><strong>nomor:</strong> <span id="detailnomor"></span></p>
+                <p><strong>nama:</strong> <span id="detailnama"></span></p>
+                <p><strong>alamat:</strong> <span id="detailalamat"></span></p>
+                <p><strong>telepon:</strong> <span id="detailtelepon"></span></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -457,10 +457,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             var telepon = $(this).find('td:eq(3)').text();
 
             // Masukkan data ke dalam modal
-            $('#detailNomor').text(nomor);
-            $('#detailNama').text(nama);
-            $('#detailAlamat').text(alamat);
-            $('#detailTelepon').text(telepon);
+            $('#detailnomor').text(nomor);
+            $('#detailnama').text(nama);
+            $('#detailalamat').text(alamat);
+            $('#detailtelepon').text(telepon);
 
             // Tampilkan modal
             $('#detailModal').modal('show');
